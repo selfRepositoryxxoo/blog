@@ -4,6 +4,13 @@ var path = require('path');
 var favicon = require('serve-favicon');
 //是用来记录访问请求
 var logger = require('morgan');
+// 要放在redis里面
+var options={
+	"host": "127.0.0.1",
+	"port": 6379
+};
+var redis = require("redis"),
+	client = redis.createClient(options);
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var settings = require('./settings');

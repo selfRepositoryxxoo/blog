@@ -10,7 +10,7 @@ module.exports = {
     },
     //要求登陆
     checkLogin:function(req,res,next){
-        console.log('req',req)
+        console.log('req',req.session)
         debugger
         if(req.session.user){
             next();

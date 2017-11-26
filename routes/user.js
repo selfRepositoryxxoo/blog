@@ -25,8 +25,10 @@ router.post('/reg',auth.checkNotLogin,function(req,res){
        req.flash('error','注册失败');
        return res.redirect('back');
      }else{
+       console.log('====>',doc)
        //实现登陆 如果此客户端在服务器端的session中有user属性的话就表示登陆状态
-       req.session.user = doc;
+       req.session.user = doc._id;
+			 // req.session.user = doc
        req.flash('success','注册成功');
        return res.redirect('/');
      }
@@ -45,8 +47,12 @@ router.post('/login',auth.checkNotLogin, function(req, res) {
       req.flash('error','登陆失败');
       return res.redirect('back');
     }else{
+      // 查到了
       if(doc){
-        req.session.user = doc;
+        // 只要是放在session就回到浏览器中
+        // req.session.user = doc;
+        console.log('=======>',doc)
+				req.session.user = doc._id;
         req.flash('success','登陆成功');
         return res.redirect('/');
       }else{

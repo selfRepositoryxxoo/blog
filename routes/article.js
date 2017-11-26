@@ -55,7 +55,7 @@ router.post('/add',auth.checkLogin,function(req,res){
     console.log(_id);
    if(_id){//修改
        Model('Article').update(//使用修改器修改对应文章的标题和内容
-           {_id:_id},
+           {_id:_id},//将文章存起来
            {$set:{title:article.title,content:article.content}},
        function(err,result){
            if(err){

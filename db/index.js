@@ -22,7 +22,7 @@ mongoose.model('Article',new mongoose.Schema({
     }],
     user:{type:ObjectId,ref:'User'}         //作者
 }));
-//在程序的任何地方都可以调用此方法
+//在程序的任何地方都可以调用此方法挂在了全局下
 global.Model = function(modelName){
     return mongoose.model(modelName);
 }
